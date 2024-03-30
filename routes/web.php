@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\CrudUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('list', [CrudUserController::class, 'listUser'])->name('user.list');
 
 Route::get('/', function () {
     return view('welcome');
