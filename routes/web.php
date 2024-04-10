@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrudUserController;
 
@@ -14,7 +15,7 @@ use App\Http\Controllers\CrudUserController;
 |
 */
 
-Route::get('dashboard', [CrudUserController::class, 'dashboard']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('login', [CrudUserController::class, 'login'])->name('login');
 Route::post('login', [CrudUserController::class, 'authUser'])->name('user.authUser');
@@ -38,4 +39,4 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

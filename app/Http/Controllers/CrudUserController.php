@@ -77,10 +77,14 @@ class CrudUserController extends Controller
     public function readUser(Request $request) {
         $user_id = $request->get('id');
         $user = User::find($user_id);
-
-        return view('crud_user.read', ['messi' => $user]);
+    
+        if (!$user) {
+            abort(404); // Xử lý khi không tìm thấy người dùng
+        }
+    
+        return view('crud_user.read', ['user' => $user]);
     }
-
+    
     /**
      * Delete user by id
      */
